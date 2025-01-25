@@ -9,8 +9,9 @@ public class Jugador : MonoBehaviour
     public float velocidad = 5.0f;
     private Rigidbody rb;
     private Animator animator;
+    public float Normalizado;
 
-    // Start se llama una vez antes de la primera ejecuci�n de Update despu�s de que se crea el MonoBehaviour
+    // Start se llama una vez antes de la primera ejecución de Update después de que se crea el MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,13 +28,16 @@ public class Jugador : MonoBehaviour
         MoverJugador(movimiento);
 
         // Actualizar animaciones
-        ActualizarAnimaciones();
+        ActualizarAnimaciones(movimiento);
 
-        // Rotar en la direcci�n del movimiento
+        // Rotar en la dirección del movimiento
         RotarJugador(movimiento);
+
+        // Calcular la magnitud del movimiento y normalizarla
+        Normalizado = movimiento.magnitude;
     }
 
-    // M�todo para obtener la entrada del usuario
+    // Método para obtener la entrada del usuario
     Vector3 ObtenerEntradaUsuario()
     {
         float movimientoHorizontal = Input.GetAxis("Horizontal");
@@ -42,7 +46,7 @@ public class Jugador : MonoBehaviour
         return new Vector3(movimientoHorizontal, 0.0f, movimientoVertical);
     }
 
-    // M�todo para mover al jugador
+    // Método para mover al jugador
     void MoverJugador(Vector3 movimiento)
     {
         if (movimiento != Vector3.zero)
@@ -51,13 +55,13 @@ public class Jugador : MonoBehaviour
         }
     }
 
-    // M�todo para actualizar las animaciones
-    void ActualizarAnimaciones()
+    // Método para actualizar las animaciones
+    void ActualizarAnimaciones(Vector3 movimiento)
     {
-
+        animator.SetFloat("Velocidad", Normalizado);
     }
 
-    // M�todo para rotar al jugador en la direcci�n del movimiento
+    // Método para rotar al jugador en la dirección del movimiento
     void RotarJugador(Vector3 movimiento)
     {
         if (movimiento != Vector3.zero)
