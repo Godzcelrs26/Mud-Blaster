@@ -7,11 +7,11 @@ public class Vida : MonoBehaviour
     public Image rellenar;
 
     public float saludMaxima = 100f;      
-    public float saludActual = 0;           
+    public float saludActual = 0;
     public float regeneracion = 0f;      
     public float escudo = 0f;            
     public bool estaVivo = true;        
-    public bool inmune = false;         
+    public bool inmune = false;
 
     public float tiempoInmunidad = 0f;
     private float contadorInmunidad = 0f;
