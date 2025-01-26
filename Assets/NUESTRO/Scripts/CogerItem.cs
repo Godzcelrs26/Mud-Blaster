@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CogerItem : MonoBehaviour
 {
      Inventario inventario;
+    public Image imagen;
     void Update()
     {
         inventario = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventario>();
@@ -11,9 +13,8 @@ public class CogerItem : MonoBehaviour
     {
        if(other.tag == "Player")
         {
-            inventario.Cantidad = inventario.Cantidad + 1;  
-                Destroy(gameObject);
+            inventario.Cantidad = inventario.Cantidad + 1;
+            Destroy(gameObject);
         }
     }
-
 }
