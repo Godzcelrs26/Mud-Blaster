@@ -3,18 +3,27 @@ using UnityEngine.UI;
 
 public class CogerItem : MonoBehaviour
 {
-     Inventario inventario;
+    public Transform puntoRecogida; // Punto al que se teletransportará el objeto
     public Image imagen;
-    void Update()
+    public ArmaBurbuja arma;
+
+    private void Start()
     {
-        inventario = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventario>();
+        arma = FindAnyObjectByType<ArmaBurbuja>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
-       if(other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            inventario.Cantidad = inventario.Cantidad + 1;
-            Destroy(gameObject);
+            TeletransportarObjeto();
         }
+    }
+
+    void TeletransportarObjeto()
+    {
+        transform.position = puntoRecogida.position;
+        transform.parent = puntoRecogida; // Opcional: hacer que el objeto sea hijo del punto de recogida
+        arma.EquiparArma();
     }
 }
