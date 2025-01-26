@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Vida : MonoBehaviour
 {
+    //UI
+    public Image rellenar;
+
     public float saludMaxima = 100f;      
-    public float saludActual;           
+    public float saludActual = 0;           
     public float regeneracion = 0f;      
     public float escudo = 0f;            
     public bool estaVivo = true;        
@@ -19,11 +23,11 @@ public class Vida : MonoBehaviour
 
     private void Update()
     {
+        rellenar.fillAmount = saludActual / saludMaxima;
         if (estaVivo && regeneracion > 0)
         {
             RegenerarSalud(Time.deltaTime * regeneracion);
         }
-
         if (inmune)
         {
             contadorInmunidad -= Time.deltaTime;
