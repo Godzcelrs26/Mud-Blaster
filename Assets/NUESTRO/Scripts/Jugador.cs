@@ -47,7 +47,7 @@ public class Jugador : Vida
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         float movimientoVertical = Input.GetAxis("Vertical");
 
-        return new Vector3(movimientoHorizontal, 0.0f, movimientoVertical);
+        return new Vector3(movimientoHorizontal, 0.0f, movimientoVertical).normalized;
     }
 
     // Método para mover al jugador
