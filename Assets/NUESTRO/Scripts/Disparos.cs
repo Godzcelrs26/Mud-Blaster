@@ -3,7 +3,7 @@ using UnityEngine;
 public class Disparos : MonoBehaviour
 {
     public GameObject proyectilPrefab; 
-    public Transform puntoDisparo;    
+    public Transform puntoDisparo;
     public float fuerzaDisparo = 20f;
 
     void Update()
@@ -23,5 +23,6 @@ public class Disparos : MonoBehaviour
         {
             rb.AddForce(puntoDisparo.forward * fuerzaDisparo , ForceMode.Impulse);
         }
+        Destroy(proyectil, 5f);
     }
 }

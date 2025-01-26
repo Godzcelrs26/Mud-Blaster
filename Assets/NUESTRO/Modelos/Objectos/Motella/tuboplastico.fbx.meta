@@ -3,7 +3,12 @@ guid: 610afa77294a4b540b29943381ff586a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tuboplastico_DefaultMaterial_AlbedoTransparency
+    second: {fileID: 2800000, guid: e8d7a948355df0743a5a531b3b88e452, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

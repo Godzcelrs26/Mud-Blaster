@@ -79,7 +79,7 @@ public class Jugador : Vida
     {
         if (collision.gameObject.CompareTag("Enemigo"))
         {
-            float ataque = 10f;
+            float ataque = 90f;
             RecibirDanio(ataque);
         }
     }
