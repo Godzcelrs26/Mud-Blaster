@@ -1,14 +1,16 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Video;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
-public class Jugador : MonoBehaviour
+public class Jugador : Vida
 {
     // Velocidad de movimiento del jugador
     public float velocidad = 5.0f;
     private Rigidbody rb;
     private Animator animator;
+
     public float Normalizado;
 
     // Start se llama una vez antes de la primera ejecución de Update después de que se crea el MonoBehaviour
@@ -16,6 +18,8 @@ public class Jugador : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        saludActual = saludMaxima; 
     }
 
     // Update se llama una vez por fotograma
@@ -68,6 +72,15 @@ public class Jugador : MonoBehaviour
         {
             Quaternion nuevaRotacion = Quaternion.LookRotation(movimiento);
             rb.MoveRotation(nuevaRotacion);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemigo"))
+        {
+            float ataque = 10f;
+            RecibirDanio(ataque);
         }
     }
 }
