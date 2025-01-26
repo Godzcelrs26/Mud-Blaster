@@ -23,6 +23,7 @@ public class Jugador : MonoBehaviour
     // Update se llama una vez por fotograma
     void Update()
     {
+        Muerte();
         // Manejar la entrada del usuario
         Vector3 movimiento = ObtenerEntradaUsuario();
 
@@ -78,6 +79,15 @@ public class Jugador : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemigo"))
         {
             vida.RecibirDanio(10);
+
         }
+    }
+    void Muerte() {
+    if(vida.saludActual == 0)
+        {
+
+            Destroy(this.gameObject);
+        }
+    
     }
 }
