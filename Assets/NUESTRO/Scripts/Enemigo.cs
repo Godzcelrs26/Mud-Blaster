@@ -7,22 +7,23 @@ public class Enemigo : MonoBehaviour
     public float velocidadPersecucion = 4.0f;
     public float distanciaDeteccion = 10.0f;
     public float distanciaAtaque = 2.0f;
+    public float daño = 10.0f; // Daño infligido al objetivo
+    public float tiempoEntreAtaques = 1.5f; // Tiempo de espera entre ataques
     public string tagObjetivo = "Player";
 
     private int puntoActual = 0;
     private Transform objetivo;
     private Vector3 posicionInicial;
+    private bool puedeAtacar = true; // Control para limitar la frecuencia de ataque
     private enum Estado { Patrullando, Persiguiendo, Atacando, Volviendo }
     private Estado estadoActual;
 
-    // Start se llama una vez antes de la primera ejecución de Update después de que se crea el MonoBehaviour
     void Start()
     {
         estadoActual = Estado.Patrullando;
         posicionInicial = transform.position;
     }
 
-    // Update se llama una vez por fotograma
     void Update()
     {
         switch (estadoActual)
@@ -85,12 +86,29 @@ public class Enemigo : MonoBehaviour
             return;
         }
 
-        // Implementar lógica de ataque aquí
+        if (puedeAtacar)
+        {
+            puedeAtacar = false; // Evita que ataque de inmediato otra vez
+
+            // Verifica si el objetivo tiene el componente Vida
+            Vida vidaJugador = objetivo.GetComponent<Vida>();
+            if (vidaJugador != null)
+            {
+                vidaJugador.RecibirDanio(daño); // Inflige daño al objetivo
+            }
+
+            Invoke(nameof(ResetAtaque), tiempoEntreAtaques); // Espera antes del próximo ataque
+        }
 
         if (Vector3.Distance(transform.position, objetivo.position) > distanciaAtaque)
         {
             estadoActual = Estado.Persiguiendo;
         }
+    }
+
+    void ResetAtaque()
+    {
+        puedeAtacar = true; // Permite atacar de nuevo
     }
 
     void Volver()
