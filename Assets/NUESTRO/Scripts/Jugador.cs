@@ -1,25 +1,23 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Video;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
-public class Jugador : Vida
+public class Jugador : MonoBehaviour
 {
     // Velocidad de movimiento del jugador
     public float velocidad = 5.0f;
     private Rigidbody rb;
     private Animator animator;
+    private Vida vida;
 
     public float Normalizado;
 
     // Start se llama una vez antes de la primera ejecución de Update después de que se crea el MonoBehaviour
     void Start()
     {
+        vida = GetComponent<Vida>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-
-        saludActual = saludMaxima; 
     }
 
     // Update se llama una vez por fotograma
@@ -79,8 +77,7 @@ public class Jugador : Vida
     {
         if (collision.gameObject.CompareTag("Enemigo"))
         {
-            float ataque = 90f;
-            RecibirDanio(ataque);
+            vida.RecibirDanio(10);
         }
     }
 }
