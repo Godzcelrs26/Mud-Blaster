@@ -1,7 +1,15 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class ArmaBurbuja : MonoBehaviour
 {
+    public TextMeshProUGUI CargaBala;
+ //   public TextMeshProUGUI CargaBala;
+
+
     public GameObject balaPrefab; // Prefab de la bala
     public Transform bocaPistola; // Punto desde donde se disparan las balas
     public float velocidadBala = 20f; // Velocidad de la bala
@@ -34,6 +42,7 @@ public class ArmaBurbuja : MonoBehaviour
                 StartCoroutine(Recargar());
             }
         }
+        Textos();
     }
 
     void Disparar()
@@ -64,4 +73,10 @@ public class ArmaBurbuja : MonoBehaviour
         pistolaActiva = false;
         gameObject.SetActive(false);
     }
+    void Textos()
+    {
+        CargaBala.text = "Cantidad de Balas" + " " + cargaActual;
+      
+    }
 }
+
