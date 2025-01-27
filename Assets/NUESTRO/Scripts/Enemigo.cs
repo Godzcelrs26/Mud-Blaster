@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemigo : MonoBehaviour
 {
+    public float vida = 1;
     public Transform[] puntosPatrulla;
     public float velocidadPatrulla = 2.0f;
     public float velocidadPersecucion = 4.0f;
@@ -40,6 +41,10 @@ public class Enemigo : MonoBehaviour
             case Estado.Volviendo:
                 Volver();
                 break;
+        }
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 
