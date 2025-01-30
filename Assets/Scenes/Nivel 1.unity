@@ -2155,7 +2155,7 @@ PrefabInstance:
       objectReference: {fileID: 1812949946}
     - target: {fileID: 1373801694669045236, guid: 0178b7b5435fb3249b2325bcbaeefc21, type: 3}
       propertyPath: velocidad
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1373801694669045236, guid: 0178b7b5435fb3249b2325bcbaeefc21, type: 3}
       propertyPath: saludActual

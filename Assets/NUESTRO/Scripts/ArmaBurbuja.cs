@@ -9,7 +9,7 @@ public class ArmaBurbuja : MonoBehaviour
     public TextMeshProUGUI CargaBala; // Texto para mostrar la carga de balas
     public GameObject balaPrefab; // Prefab de la bala
     public Transform bocaPistola; // Punto desde donde se disparan las balas
-    public float velocidadBala = 20f; // Velocidad de la bala
+    public float velocidadBala = 10f; // Velocidad de la bala
     public float cargaMaxima = 100f; // Carga máxima de la pistola
     public float consumoPorBala = 10f; // Porcentaje de carga consumido por cada bala
     public float tiempoRecarga = 2f; // Tiempo que tarda en recargar

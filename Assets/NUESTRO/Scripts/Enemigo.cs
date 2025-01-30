@@ -161,4 +161,12 @@ public class Enemigo : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, distanciaDeteccion);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bala"))
+        {
+            vida = -vida; 
+        }
+    }
 }

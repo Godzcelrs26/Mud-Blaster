@@ -24,7 +24,7 @@ public class Vida : MonoBehaviour
     private void Update()
     {
         rellenar.fillAmount = saludActual / saludMaxima;
-        if (estaVivo && regeneracion > 0)
+        if (estaVivo && regeneracion < 50)
         {
             RegenerarSalud(Time.deltaTime * regeneracion);
         }
